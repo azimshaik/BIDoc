@@ -1,0 +1,6 @@
+D:\Desktop\.net practice modules\BIDoc\BIDoc\bin\BIDoc.dll
+D:\Desktop\.net practice modules\BIDoc\BIDoc\bin\BIDoc.pdb
+D:\Desktop\.net practice modules\BIDoc\BIDoc\obj\Debug\BIDoc.csprojResolveAssemblyReference.cache
+D:\Desktop\.net practice modules\BIDoc\BIDoc\obj\Debug\BIDoc.dll
+D:\Desktop\.net practice modules\BIDoc\BIDoc\obj\Debug\BIDoc.pdb
+D:\Desktop\.net practice modules\BIDoc\BIDoc\bin\DocX.dll
