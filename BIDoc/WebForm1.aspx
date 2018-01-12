@@ -17,7 +17,7 @@
     </head>
     <body>
 
-        <form id="form1" runat="server">
+        <form id="formBI" runat="server">
 
         <div class="wrapper">
             <!-- Sidebar Holder --> 
@@ -106,43 +106,47 @@
                 <section id="pilotOverview">
                        <h2>Pilot Overview</h2>
                        <div class="form-group">
-                           <textarea class="form-control" id="Pilot_Overview_Heading" cols="10" rows="1" placeholder="Overview Title" runat="server"></textarea>
+                           <textarea class="form-control" id="Pilot_Overview_Heading" cols="10" rows="1" placeholder="Overview Title" name="PilotTitle" data-ttype="h" ></textarea>
                            <br />
-                           <textarea class="form-control" id="Pilot_Overview1_Text" rows="4" placeholder="Overview 1.1" runat="server"></textarea>
+                           <textarea class="form-control" id="Pilot_Overview1_Text" rows="4" placeholder="Overview 1.1" name="PilotO1"></textarea>
                            <br />
-                           <textarea class="form-control" id="Pilot_Overview2_Text" rows="4" placeholder="Overview 1.2" runat="server"></textarea>
+                           <textarea class="form-control" id="Pilot_Overview2_Text" rows="4" placeholder="Overview 1.2" name="PilotO2"></textarea>
                            <br />
-                           <textarea class="form-control" id="Pilot_Overview3_Text" rows="4" placeholder="Overview 1.3" runat="server"></textarea>
+                           <textarea class="form-control" id="Pilot_Overview3_Text" rows="4" placeholder="Overview 1.3" name="PilotO3"></textarea>
+                           <br />
                        </div>
+                       <input type="button" value="Add" class="btn btn-group-sm btn-info" onclick="AddTextAreaControl('pilotOverview')" />
                 </section>
                 <section id="findingsSubmenu">
                     <h2>3. Findings</h2>
                     <p>This section is a summary of findings from the BIDiscovery! Workshop</p>
                      <div class="form-group">
                          <h3>3.1 Big Plans</h3>
-                         <textarea class="form-control" id="Big_Plans_Text" rows="4" runat="server"></textarea>
+                         <textarea class="form-control" id="Big_Plans_Text" rows="4" name="Findings1"></textarea>
                          <h3>3.2 Key Drivers</h3>
-                         <textarea class="form-control" id="Key_Drivers_Text" rows="4" runat="server"></textarea>
+                         <textarea class="form-control" id="Key_Drivers_Text" rows="4" name="Findings2"></textarea>
                          <h3>3.3 Critical Success Factors</h3>
-                         <textarea class="form-control" id="Critical_Success_Factors_text" rows="4" runat="server"></textarea>
+                         <textarea class="form-control" id="Critical_Success_Factors_text" rows="4" name="Findings3"></textarea>
                          <h3>3.4 Barriers to Success</h3>
-                         <textarea class="form-control" id="Barriers_to_Success_Text" rows="4" runat="server"></textarea>
+                         <textarea class="form-control" id="Barriers_to_Success_Text" rows="4" name="Findings4"></textarea>
                          <h3>3.5 Constraints</h3>
-                         <textarea class="form-control" id="Constraints_Text" rows="4" runat="server"></textarea>
+                         <textarea class="form-control" id="Constraints_Text" rows="4" name="Findings5"></textarea>
                          <h3>3.6 Business Critical Questions</h3>
-                         <textarea class="form-control" id="Business_Critical_Questions_Text" rows="4" runat="server"></textarea>
+                         <textarea class="form-control" id="Business_Critical_Questions_Text" rows="4" name="Findings6"></textarea>
                          <h3>3.7 Business Model</h3>
-                         <textarea class="form-control" id="Business_Model_Text" rows="4" runat="server"></textarea>
-                         <h4>3.7.1 Dimensions</h4>
-                         <textarea class="form-control" id="Dimentions_Text" rows="4" runat="server"></textarea>
-                         
+                         <textarea class="form-control" id="Business_Model_Text" rows="4" name="Findings7"></textarea>
+                         <h3>3.7.1 Dimensions</h3>
+                         <textarea class="form-control" id="Dimentions_Text" rows="4" name="Findings7_1"></textarea>
+                         <br />
                      </div>
+                       <input type="button" value="Add" class="btn btn-group-sm btn-info" onclick="AddTextAreaControl('findingsSubmenu')" />
                 </section>
                 <div class="line"></div>
                 <h2>Collapsible Sidebar Using Bootstrap 3</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Btn_CreateDoc_Click" />
+                <!--<asp:Button ID="Button1" runat="server" Text="Save Doc" CssClass="btn btn-lg btn-primary"  OnClientClick="Submit()" />OnClick="Btn_CreateDoc_Click"-->
+                <input type="button" value="Save Doc" class="btn btn-lg btn-primary" onclick ="Submit()" />
                 <div class="line"></div>
 
                 <h2>Lorem Ipsum Dolor</h2>
@@ -172,6 +176,36 @@
          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.6.8-fix/jquery.nicescroll.min.js"></script>
 
          <script type="text/javascript">
+             function AddTextAreaControl(group)
+             {
+                 var name = group + "-" + $("#" + group + " .form-group").children(".form-control").length;
+                 $("#" + group + " .form-group").append('<textarea class="form-control" cols="10" rows="4" placeholder="Enter Text" name="' +name +'" id="'+ name+ '"></textarea><br/>');
+
+             }
+             function Submit()
+             {
+                var FormDataArray = [];
+
+                 $.each($("#formBI .form-control"), function (i, v) {
+                     var kv = { "ID": $(v).prop("id"), "Name": $(v).prop("name"), "Value": $(v).val(), "TextType": $(v).data("ttype") };
+                     FormDataArray.push(kv); 
+                 });
+
+                 $.ajax({
+                     url: "WebForm1.aspx/SubmitForm",
+                     method: "POST",
+                     contentType: 'application/json',
+                     data: JSON.stringify({ FormData: FormDataArray }),
+                     traditional: true, 
+                     failure: function (a,b,c) {
+                         console.log(a); 
+                     },
+                     success: function (a, b, c) {
+                         console.log(b); 
+                     }
+                 });
+             }
+
              $(document).ready(function () {
                  $("#sidebar").niceScroll({
                      cursorcolor: '#53619d',
